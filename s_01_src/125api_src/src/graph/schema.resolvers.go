@@ -11,17 +11,17 @@ import (
 	"github.com/gqlgensamples/golang-gqlgen-postgresql-example/graph/model"
 )
 
-// User is the resolver for the User field.
-func (r *queryResolver) User(ctx context.Context, id string) (*model.User, error) {
-	user, err := r.Repo.User.GetUser(ctx, id)
+// OfferList is the resolver for the OfferList field.
+func (r *queryResolver) OfferList(ctx context.Context, id string) (*model.OfferList, error) {
+	offerlist, err := r.Repo.OfferList.GetOfferList(ctx, id)
 	if err != nil {
-		log.Print("failed to get user")
+		log.Print("failed to get offerlist")
 		return nil, err
 	}
 
-	output := &model.User{
-		ID:   user.ID,
-		Name: user.Name,
+	output := &model.OfferList{
+		ID:   offerlist.ID,
+		Name: offerlist.Name,
 	}
 
 	return output, nil

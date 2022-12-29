@@ -7,12 +7,12 @@ import (
 
 type Repositories struct {
 	db   *io.SQLdatabase
-	User repository.IUserRepository
+	OfferList repository.IOfferListRepository
 }
 
 func NewRepositories(db *io.SQLdatabase) (*Repositories, error) {
 	return &Repositories{
 		db:   db,
-		User: NewUserRepository(db),
+		OfferList: NewOfferListRepository(db),
 	}, nil
 }

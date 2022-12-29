@@ -10,13 +10,13 @@ import (
 )
 
 var (
-	userRepo *UserRepository
+	offerlistRepo *OfferListRepository
 )
 
 func TestMain(m *testing.M) {
 	cfg, _ := config.LoadConfig(context.Background())
 	db, _ := io.NewSQLdatabase(cfg)
-	userRepo = NewUserRepository(db)
+	offerlistRepo = NewOfferListRepository(db)
 
 	res := m.Run()
 

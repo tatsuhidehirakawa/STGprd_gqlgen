@@ -1,12 +1,12 @@
 
 
-type User {
+type OfferList {
   id: ID!
   name: String!
 }
 
 type Query {
-  User(id: String!): User
+  OfferList(id: String!): OfferList
 }
 
 # input NewTodo {

@@ -10,21 +10,21 @@ import (
 	"github.com/gqlgensamples/golang-gqlgen-postgresql-example/io"
 )
 
-type UserRepository struct {
+type OfferListRepository struct {
 	database *io.SQLdatabase
 }
 
-var _ repository.IUserRepository = (*UserRepository)(nil)
+var _ repository.IOfferListRepository = (*OfferListRepository)(nil)
 
-func NewUserRepository(db *io.SQLdatabase) *UserRepository {
-	return &UserRepository{
+func NewOfferListRepository(db *io.SQLdatabase) *OfferListRepository {
+	return &OfferListRepository{
 		database: db,
 	}
 }
 
-func (r *UserRepository) GetUser(ctx context.Context, userID string) (*entity.User, error) {
-	var user entity.User
-	err := r.database.SQLX.Get(&user, "SELECT id, name FROM users WHERE id=$1", userID)
+func (r *OfferListRepository) GetOfferList(ctx context.Context, offerlistID string) (*entity.OfferList, error) {
+	var offerlist entity.OfferList
+	err := r.database.SQLX.Get(&offerlist, "SELECT id, name FROM offerlists WHERE id=$1", offerlistID)
 	if err != nil {
 		switch err {
 		case sql.ErrNoRows:
@@ -33,5 +33,5 @@ func (r *UserRepository) GetUser(ctx context.Context, userID string) (*entity.Us
 			return nil, err
 		}
 	}
-	return &user, nil
+	return &offerlist, nil
 }
